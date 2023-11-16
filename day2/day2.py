@@ -70,6 +70,11 @@
 # # sam = regular[1]
 # # isaac = regular[3]
 
+new_item = [('name',1),
+            ('sam',4),
+            ('andy',2)]
+
+new_item2 = [1,2,3,4,5]
 # *musa, sam, isaac, all_other, last = regular
 # print(musa, sam, isaac, all_other)
 
@@ -80,10 +85,12 @@ store = {
             'vip': [('name',1),('name',4),('name',9)], 
             'regular': [6,7,8,9,1,2,3,4,5,5,6]
          }
-
-# for name, id in [('name',1),('name',4),('name',2)]:
-#     print(id)
-#     break
+for sr_no, result in enumerate(new_item):
+    name, id = result
+    print(sr_no, id)
+    if sr_no == 4:
+        print(id)
+  
 
 
 # for key, value in store.items():
@@ -94,21 +101,21 @@ store = {
  
 print(store.items())  # [('vip', [('name', 1), ('name', 4), ('name', 2)]), ('regular', [6, 7, 8, 9, 1, 2, 3, 4, 5, 5, 6])]
 
-for customer_type, value in store.items():
-    print(customer_type )
-    if customer_type == 'regular': #true vip == 'regular
-        print('yes regular customer')
-        if 9 in value: #[6, 7, 8, 9, 1, 2, 3, 4, 5, 5, 6]
-            print('yes')
-            print(value[3])
-            for item in value:
-                if item == 9:
-                    print(item)
-    else:
-        print('not regular')
-    print(value)
+# for customer_type, value in store.items():
+#     print(customer_type )
+#     if customer_type == 'regular': #true vip == 'regular
+#         print('yes regular customer')
+#         if 9 in value: #[6, 7, 8, 9, 1, 2, 3, 4, 5, 5, 6]
+#             print('yes')
+#             print(value[3])
+#             for item in value:
+#                 if item == 9:
+#                     print(item)
+#     else:
+#         print('not regular')
+#     print(value)
 
     
 
-# for value in store:
+# # for value in store:
 
