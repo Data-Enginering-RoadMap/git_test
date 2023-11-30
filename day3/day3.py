@@ -34,6 +34,7 @@ else:
     container = value 
 
 container = value * 10 if value == 10 else value
+container = value * 10 if value else value
 
 ## is  == & =
 # assignment operator
@@ -50,12 +51,14 @@ print(a is b)
 print(a == b)
 print(id(a),  id(b))
 
-ans = value == 10
+ans = [1]
 
 if ans:
     container = value * 10 
+    print("Hello")
+print(bool(ans))
 
 
-container = value
+
 
 
