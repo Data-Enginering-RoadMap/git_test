@@ -20,7 +20,7 @@ Basic Syntax and Data Types:
 - **Loops**
   - Loop control statements (break, continue)
   - Iterating through lists, dictionaries, etc.
- - List Dictionary and Set comprehensions
+
 
 
 ### Functions:
@@ -37,6 +37,15 @@ Basic Syntax and Data Types:
 #### Project 1
 Rock paper scissors 
 
+### Object-Oriented Programming (OOP):
+- **Classes and Objects**
+  - Class methods and attributes
+  - Encapsulation, inheritance, polymorphism
+
+* Enums, dataclass, namedtuple, protocol abstract base classes
+
+- **Magic Methods**
+  - Special methods like `__init__`, `__str__`, `__repr__`
 
 ### File Handling:
 - **File Modes**
@@ -53,16 +62,7 @@ Rock paper scissors
 - **Advanced Operations**
   - List slicing and manipulation
   -
-
-### Object-Oriented Programming (OOP):
-- **Classes and Objects**
-  - Class methods and attributes
-  - Encapsulation, inheritance, polymorphism
-
-* Enums, dataclass, namedtuple, protocol abstract base classes
-
-- **Magic Methods**
-  - Special methods like `__init__`, `__str__`, `__repr__`
+ - List Dictionary and Set comprehensions ****
 
 
 ### Advance Text/String  Manipulation:
@@ -95,10 +95,10 @@ Rock paper scissors
 
 - **Webscrapping **
   - HTML parsing
-  - Scrapping a website
+  - Scrapping a website - BeautifulSoup and Autoscrapper
 
 
-# Projects Rites of Passage:
+# Projects --- Rites of Passage:
 - functional programming
     * solving a series of Excercises
     * Building an Interactive Bot
