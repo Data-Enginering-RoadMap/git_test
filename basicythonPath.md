@@ -27,12 +27,15 @@ Basic Syntax and Data Types:
 - **Function Parameters**
   - Default arguments
   - Variable-length arguments (*args, **kwargs)
+  - lambda function
 
 - **Return Values**
   - Multiple return values
+  - Generator
 
 - recursive functions 
-- Generator
+- higher order functions
+- decorators
 
 #### Project 1
 Rock paper scissors 
