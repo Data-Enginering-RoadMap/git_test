@@ -94,30 +94,32 @@ def sum_array2(*args): #* is positional ** is keyward
 new= [12,10000,938733]
 
 
-def sum_array3(array, **ade): #* is positional ** is keyward
+def sum_array3(array, *args): #* is positional ** is keyward
     result = 0
     last_item = None
     # print(args)
-    # array = []
-    print(ade)
-    # for item in args:
-    #     array.extend(item)
 
-    # for i in array:
-    #     result += i
-    #     last_item = i
-    #     # result = result + i
+    for item in args:
+        array.extend(item)
+
+    for i in array:
+        result += i
+        last_item = i
+        # result = result + i
     
-    # return result, last_item
+    return result, last_item
 
-print(sum_array3(array, ade=new))
-print(sum_array3(array, **{'ade':new}))
+print(sum_array2(array, new))
+print(sum_array3(array, new))
+
 # print(sum_array2(array, new))
 
 
 # def sum_array4(a,*,b=None):
 #     print(b)
 # sum_array4(1)
-def sum_array4(\, b, c):
+def sum_array4(b, c, /):
     print(b)
-sum_array4(1,2,3)
+sum_array4(1,2)
+
+print()
