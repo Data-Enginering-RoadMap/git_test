@@ -52,15 +52,17 @@ def validate(user_response):
         print(f"You are already in the database {temp_database}")
     return user_response
 
-def database():
-
+def database(action,*args, **kwargs): 
     #read from database
-    return read('day5/customercare.txt')
-
-    #modify database
+    #mdify database
     #delete from database
-    ...
-
+    #autnenticate user
+    if action == 'read':
+        return read(**kwargs)
+    if action == 'modify':
+        return modify(**kwargs)
+    if action == 'delete':
+        return delete(**kwargs)
 
 
 def read(file_path):
@@ -68,22 +70,42 @@ def read(file_path):
         user = file.read().split(',')
         return user
 
-def modify():
-    ... 
+def modify(file_path, content):
+    file = open(file_path, 'a') # r, w, a, rb, wb, ab
+    file.write(content)
+    file.close()
+
+def auth (user, password):
+    ...
 
 
-def delete():
-    ... 
+
+def delete(file_path, content, style): 
+    file = open(file_path, 'r').read()
+    filtered = ''
+    
+    if style == 'landscape':
+        for  i in file.split(','): 
+            if i != content:
+                filtered += i + ','
+        open(file_path, 'w').write(filtered)
+
+    elif style == 'portrait':
+        for  i in file.split(','): 
+            if i != content:
+                open(file_path, 'w').write(i + '\n')
+    else:
+        print("Invalid style")
+
+
 
 def main():
     hola()
     database()
 
-temp_database = database() # customer care 
-print(temp_database)
-bad_users = ['samson'] # Internal Audit
-
-
+database('read', file_path = 'day5/customercare.txt') #
+database('delete', file_path= 'day5/customercare.txt', content='Ade', style= 'portrait') #
+database('modify', file_path = 'day5/internalaudit.txt', content =  'Ade')
 # main()
 # read('day5/customercare.txt')
 # read('day5/internalaudit.txt')
