@@ -13,7 +13,8 @@
 # Tolu
 # Titi
 
-
+customercare="day5/customercare.txt"
+baduser="day5/internalaudit.txt"
 
 def hola():
     '''The name of the bot is Hola'''
@@ -34,7 +35,7 @@ def users(response):
         validated_user = validate(response) # caps version of response
         response = validated_user
         # response = validate(response)
-
+        
         print("Hello, " + response + "! " + validated_user)
     else:
         raise Exception("You did not enter a name") ## exceptions
@@ -44,18 +45,27 @@ def users(response):
 
 def validate(user_response):
     user_response = user_response.capitalize()
-    if user_response not in temp_database and user_response not in bad_users:
+    if user_response in bad_users:
+        print(f"You are a bad user.Geroouuutttttt")
+        return user_response
+    elif user_response not in temp_database:
         temp_database.append(user_response)
         print(temp_database)
+        modify(user_response)
         return user_response
     else:
         print(f"You are already in the database {temp_database}")
     return user_response
 
-def database():
+def database(data_file):
+    data_file=read(data_file)
+    return data_file
 
     #read from database
-    return read('day5/customercare.txt')
+    #return read()
+
+#def database_bad_user():
+    #return read()
 
     #modify database
     #delete from database
@@ -68,8 +78,12 @@ def read(file_path):
         user = file.read().split(',')
         return user
 
-def modify():
-    ... 
+def modify(user_response):#write to the database
+    f= open("day5/customercare.txt", "a")
+    f.write(',' + user_response)
+    f.close()
+
+
 
 
 def delete():
@@ -77,13 +91,13 @@ def delete():
 
 def main():
     hola()
-    database()
+    #database()
 
-temp_database = database() # customer care 
+temp_database = database(customercare)# customer care 
 print(temp_database)
-bad_users = ['samson'] # Internal Audit
+bad_users = database(baduser) # Internal Audit
+print(bad_users)
 
-
-# main()
+main()
 # read('day5/customercare.txt')
 # read('day5/internalaudit.txt')
