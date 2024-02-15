@@ -13,8 +13,9 @@
 # Tolu
 # Titi
 
-customercare="day5/customercare.txt"
-baduser="day5/internalaudit.txt"
+# customercare="day5/customercare.txt"
+# baduser="day5/internalaudit.txt"
+# baduser =database()
 
 def hola():
     '''The name of the bot is Hola'''
@@ -22,11 +23,22 @@ def hola():
     # grab users input
     valu_input = input("Enter your name: ")
     users(valu_input)
+    #include your statements here to incorporate your delete function
+    remove_input=input("would you like to delete your information from the database?Y/N: ")
+    if remove_input =='Y':
+        print("Its sad to see you leave")
+        database('delete', file_path= 'day5/customercare.txt',content=valu_input.capitalize(),remove_input=remove_input)
+    else:
+        print("Thanks for not leaving")
 
 
 
-def greetings():
-    ...
+
+
+
+
+# def greetings():
+#     print("Hello, " + response + "! " + validated_user)
 
 def users(response):
 
@@ -36,30 +48,33 @@ def users(response):
         response = validated_user
         # response = validate(response)
         
-        print("Hello, " + response + "! " + validated_user)
+        # print("Hello, " + response + "! " + validated_user)
+        greetings(response, validated_user)
     else:
         raise Exception("You did not enter a name") ## exceptions
     ...
-    
+def greetings(response, validated_user):
+    print("Hello, " + response + "! " + validated_user) 
 
 
 def validate(user_response):
     user_response = user_response.capitalize()
-    if user_response in bad_users:
+    if user_response in database('read', file_path = 'day5/internalaudit.txt'):#bad_users:
         print(f"You are a bad user.Geroouuutttttt")
         return user_response
-    elif user_response not in temp_database:
-        temp_database.append(user_response)
-        print(temp_database)
-        modify(user_response)
+    elif user_response not in database('read', file_path = 'day5/customercare.txt'):
+        #temp_database.append(user_response)
+        database('modify', file_path = 'day5/customercare.txt',content=user_response)
+        #print(temp_database)
+        #database(user_response)
         return user_response
     else:
-        print(f"You are already in the database {temp_database}")
-    return user_response
+        print(f"You are already in the database ") #{database('read', file_path = 'day5/customercare.txt')}
+        return user_response
 
-def database(data_file):
-    data_file=read(data_file)
-    return data_file
+# def database(data_file):
+#     data_file=read(data_file)
+#     return data_file
 
     #read from database
     #return read()
@@ -68,6 +83,7 @@ def database(data_file):
     #return read()
 
     #modify database
+
 def database(action,*args, **kwargs): 
     #read from database
     #mdify database
@@ -86,15 +102,15 @@ def read(file_path):
         user = file.read().split(',')
         return user
 
-def modify(user_response):#write to the database
-    f= open("day5/customercare.txt", "a")
-    f.write(',' + user_response)
-    f.close()
+# def modify(user_response):#write to the database
+#     f= open("day5/customercare.txt", "a")
+#     f.write(',' + user_response)
+#     f.close()
 
 
 def modify(file_path, content):
     file = open(file_path, 'a') # r, w, a, rb, wb, ab
-    file.write(content)
+    file.write(',' + content)
     file.close()
 
 def auth (user, password):
@@ -102,38 +118,56 @@ def auth (user, password):
 
 
 
-def delete(file_path, content, style): 
+# def delete(file_path, content, style): 
+#     file = open(file_path, 'r').read()
+#     filtered = ''
+    
+#     if style == 'landscape':
+#         for  i in file.split(','): 
+#             if i != content:
+#                 filtered += i + ','
+#         open(file_path, 'w').write(filtered)
+
+#     elif style == 'portrait':
+#         for  i in file.split(','): 
+#             if i != content:
+#                 open(file_path, 'w').write(i + '\n')
+#     else:
+#         print("Invalid style")
+
+def delete(file_path, content,remove_input): 
     file = open(file_path, 'r').read()
     filtered = ''
-    
-    if style == 'landscape':
-        for  i in file.split(','): 
+    split_db=file.rstrip().split(',')
+    length=len(split_db)-1
+    if remove_input== 'Y':
+        for  index,i in enumerate(split_db): 
             if i != content:
-                filtered += i + ','
-        open(file_path, 'w').write(filtered)
+                if index != length: 
+                    filtered += i + ','
+                else:
+                    filtered += i  
+        open(file_path, 'w').write(filtered) 
 
-    elif style == 'portrait':
-        for  i in file.split(','): 
-            if i != content:
-                open(file_path, 'w').write(i + '\n')
-    else:
-        print("Invalid style")
-
+        #         filtered += i #+ ','
+        # open(file_path, 'w').write(filtered)
 
 
 def main():
     hola()
+    #remove_record()
     #database()
 
-temp_database = database(customercare)# customer care 
-print(temp_database)
-bad_users = database(baduser) # Internal Audit
-print(bad_users)
+# temp_database = database(customercare)# customer care 
+# print(temp_database)
+# bad_users = database(baduser) # Internal Audit
+# print(bad_users)
 
 main()
-database('read', file_path = 'day5/customercare.txt') #
-database('delete', file_path= 'day5/customercare.txt', content='Ade', style= 'portrait') #
-database('modify', file_path = 'day5/internalaudit.txt', content =  'Ade')
+# temp_database=database('read', file_path = 'day5/customercare.txt') #
+# bad_users=database('read', file_path = 'day5/internalaudit.txt')
+# database('delete', file_path= 'day5/customercare.txt', content='Ade', style= 'portrait') #
+# database('modify', file_path = 'day5/internalaudit.txt', content =  'Ade')
 # main()
 # read('day5/customercare.txt')
 # read('day5/internalaudit.txt')

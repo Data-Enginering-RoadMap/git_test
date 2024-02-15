@@ -125,15 +125,18 @@ def main():
     hola()
     #database()
 
+<<<<<<< HEAD
 temp_database = database(customercare)# customer care 
 print(temp_database)
 bad_users = database(baduser) # Internal Audit
 print(bad_users)
 
 main()
+=======
 database('read', file_path = 'day5/customercare.txt') #
 database('delete', file_path= 'day5/customercare.txt', content='Ade', style= 'portrait') #
 database('modify', file_path = 'day5/internalaudit.txt', content =  'Ade')
 # main()
+>>>>>>> c10c642ca55f0d6e43fc654de8528d72ccc74c0a
 # read('day5/customercare.txt')
 # read('day5/internalaudit.txt')
