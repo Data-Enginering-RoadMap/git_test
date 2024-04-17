@@ -22,10 +22,11 @@ class Product:
         self.expiry_date = expiry_date
 
     def __repr__(self) -> str:
-        cost = self.cost_price
-        return f'{self.name}'
+        
+        return f'{self.name} {self.cost_price} {self.description}'
+    
 
-
+#dunder === . double underscore
 
 class Warehouse:
 
@@ -119,14 +120,14 @@ shaun = staff('shaun', 10, 'dallas','123432', 'bob')
 mike = staff('mike', 10, 'dallas','123432', 'bob')
 Vik = staff('Vik', 10, 'dallas','123432', 'bob')
 
-NewAmEmpRecord = EmployeeRecord(set())
+# NewAmEmpRecord = EmployeeRecord(set())
 
-NewAmEmpRecord.add_employee(ade)
-NewAmEmpRecord.add_employee({sam, shaun, Vik, mike, Vik})
-NewAmEmpRecord.add_employee(ade)
-NewAmEmpRecord.print_employee()
+# NewAmEmpRecord.add_employee(ade)
+# NewAmEmpRecord.add_employee({sam, shaun, Vik, mike, Vik})
+# NewAmEmpRecord.add_employee(ade)
+# NewAmEmpRecord.print_employee()
 
-        # return f'You have no products to count'
+#         # return f'You have no products to count'
     
 
 
@@ -177,7 +178,8 @@ if __name__ == '__main__':
     for i in [rice, yam]:
         ware_house_texas.add_product(i)
 
-    # ware_house_texas.quantity() # give yam
+    ware_house_texas.quantity() # give yam
+    ware_house_texas.quantity('Rice') # give yam
 
 
     ware_house_texas.remove_product('Bean',1)
@@ -186,7 +188,14 @@ if __name__ == '__main__':
     ware_house_texas.remove_product('bean',2)
 
     # ware_house_texas.quantity() # give yam
+    NewAmEmpRecord = EmployeeRecord(set())
 
+    NewAmEmpRecord.add_employee(ade)
+    NewAmEmpRecord.add_employee({sam, shaun, Vik, mike, Vik})
+    NewAmEmpRecord.add_employee(ade)
+    NewAmEmpRecord.print_employee()
+
+# 
 
 # remove 
 # add 
