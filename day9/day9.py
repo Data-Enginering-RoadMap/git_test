@@ -128,7 +128,16 @@ NewAmEmpRecord.print_employee()
 
         # return f'You have no products to count'
     
+class CustomerInfo:
 
+    def __init__(self, First_Name,Last_Name ,Phone_Num, Email):
+        self.First_Name = First_Name
+        self.Last_Name = Last_Name
+        self.Phone_Num = Phone_Num
+        self.Email = Email
+        
+    def display_info(self):
+        print(f'Welcome {self.First_Name}, these are your details on file. {self.First_Name},{self.Last_Name},{self.Phone_Num},{self.Email}')
 
 
 
@@ -190,3 +199,12 @@ if __name__ == '__main__':
 
 # remove 
 # add 
+    
+
+customer1 = CustomerInfo('Aminat','Smith','832-345-1234','aminSmith12@gmail.com')
+customer2 = CustomerInfo('Lolade','Awoyemi','682-285-6116','lolawoyemi@yahoo.com')
+customer3 = CustomerInfo('Olamide','Ajisafe','763-236-3452','oa127@yahoo.com')
+
+customer1.display_info()
+customer2.display_info()
+customer3.display_info()

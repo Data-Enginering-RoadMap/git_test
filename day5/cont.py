@@ -115,7 +115,9 @@ def modify(file_path, content):
 
 def auth (user, password):
     ...
-
+    login_input = input("Enter your login: ")
+    password_input = input("Enter your password: ")
+    users(valu_input)
 
 
 # def delete(file_path, content, style): 
