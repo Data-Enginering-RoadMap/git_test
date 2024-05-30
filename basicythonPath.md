@@ -50,6 +50,8 @@ Rock paper scissors
 - **Magic Methods**
   - Special methods like `__init__`, `__str__`, `__repr__`
 
+
+***8888
 ### File Handling:
 - **File Modes**
   - Reading, writing, appending

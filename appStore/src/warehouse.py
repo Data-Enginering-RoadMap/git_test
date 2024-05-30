@@ -1,16 +1,16 @@
 from typing import List
 from collections import namedtuple, Counter
-from products import Product
+
 
 
 
 
 class Warehouse:
 
-    def __init__(self, stock: List[Product]) -> None:
+    def __init__(self, stock) -> None:
         self.stock = stock
 
-    def add_product(self, product: Product):
+    def add_product(self, product):
         self.stock.append(product)
         
     def __repr__(self) -> str:
@@ -18,7 +18,11 @@ class Warehouse:
             raise  Exception('wrong container')
         #total number
         return f'You currently have a total of {len(self.stock)} products in your warehouse'
-        
+    
+    def price(self, product):
+
+        return 10
+    
     def quantity(self, product_name='all'):
         counter = Counter([product.name for product in self.stock ])
 
