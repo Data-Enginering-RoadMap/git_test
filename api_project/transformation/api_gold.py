@@ -8,10 +8,11 @@ from pprint import pprint
 
 
 
+dictionary= defaultdict(list)
 def gold(file_path):
-   with open(file_path,'r') as f:
+    global dictionary
+    with open(file_path,'r') as f:
             
-            dictionary= defaultdict(list)
             csv_reader= f.readlines()
             for indx, i in enumerate(csv_reader):
 
@@ -26,16 +27,16 @@ def gold(file_path):
                          dictionary[key].append(value)
                 # item = dict(zip(header,body))
             
-                    
-                 
-            pprint(dictionary)
+        
+    pprint(dictionary)
+    # write your gold logic here                
 
 
 
 
 
 
-gold('api_project/Storage/silver_20240615.csv')
+
 
 # def cal_col_avg(file_path, column_name):
 # #file_path = 'coindesk_june_7_table.csv'
