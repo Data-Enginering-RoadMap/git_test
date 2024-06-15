@@ -12,7 +12,7 @@ def file_opener(file_location, mode):
 #read json file
 def silver(ingestion_location):
     
-    silver_output = ingestion_location.replace('data', 'silver').replace('.json', '.csv')
+    silver_output = ingestion_location.replace('data', 'silver').replace('.json', '.csv').replace('Ingestion', 'Silver')
     file = file_opener(ingestion_location, 'r')
     data_trans=json.load(file)
     data_trans=flatten(data_trans) 
