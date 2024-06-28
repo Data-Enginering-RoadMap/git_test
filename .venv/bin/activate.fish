@@ -1,5 +1,9 @@
 # This file must be used with "source <venv>/bin/activate.fish" *from fish*
+<<<<<<< HEAD
 # (https://fishshell.com/); you cannot run it directly.
+=======
+# (https://fishshell.com/). You cannot run it directly.
+>>>>>>> 6f0161ce2b6753f0d14760329381327b2f263ae7
 
 function deactivate  -d "Exit virtual environment and return to normal shell environment"
     # reset old environment variables
@@ -13,6 +17,7 @@ function deactivate  -d "Exit virtual environment and return to normal shell env
     end
 
     if test -n "$_OLD_FISH_PROMPT_OVERRIDE"
+<<<<<<< HEAD
         functions -e fish_prompt
         set -e _OLD_FISH_PROMPT_OVERRIDE
         functions -c _old_fish_prompt fish_prompt
@@ -20,6 +25,19 @@ function deactivate  -d "Exit virtual environment and return to normal shell env
     end
 
     set -e VIRTUAL_ENV
+=======
+        set -e _OLD_FISH_PROMPT_OVERRIDE
+        # prevents error when using nested fish instances (Issue #93858)
+        if functions -q _old_fish_prompt
+            functions -e fish_prompt
+            functions -c _old_fish_prompt fish_prompt
+            functions -e _old_fish_prompt
+        end
+    end
+
+    set -e VIRTUAL_ENV
+    set -e VIRTUAL_ENV_PROMPT
+>>>>>>> 6f0161ce2b6753f0d14760329381327b2f263ae7
     if test "$argv[1]" != "nondestructive"
         # Self-destruct!
         functions -e deactivate
@@ -29,7 +47,11 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
+<<<<<<< HEAD
 set -gx VIRTUAL_ENV "/Users/ruthajisafe/git_test/.venv"
+=======
+set -gx VIRTUAL_ENV "/Users/olamideojo/Downloads/training/git_test/.venv"
+>>>>>>> 6f0161ce2b6753f0d14760329381327b2f263ae7
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
@@ -61,4 +83,8 @@ if test -z "$VIRTUAL_ENV_DISABLE_PROMPT"
     end
 
     set -gx _OLD_FISH_PROMPT_OVERRIDE "$VIRTUAL_ENV"
+<<<<<<< HEAD
+=======
+    set -gx VIRTUAL_ENV_PROMPT "(.venv) "
+>>>>>>> 6f0161ce2b6753f0d14760329381327b2f263ae7
 end

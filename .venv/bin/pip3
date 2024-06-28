@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/Users/ruthajisafe/git_test/.venv/bin/python3
+=======
+#!/Users/olamideojo/Downloads/training/git_test/.venv/bin/python3.12
+>>>>>>> 6f0161ce2b6753f0d14760329381327b2f263ae7
 # -*- coding: utf-8 -*-
 import re
 import sys
