@@ -3,25 +3,29 @@ import csv
 from flatten_json import flatten
 import datetime
 #flatten json file
-coindesk_june_7_flat='output.json'
 #dry
 def file_opener(file_location, mode):
     file = open(file_location, mode)
     return file
 
 #read json file
-def silver(ingestion_location):
-    
-    silver_output = ingestion_location.replace('data', 'silver').replace('.json', '.csv').replace('Ingestion', 'Silver')
+def silver(storage_path, ingestion_location):
+
+    silver_output = str(ingestion_location).replace('data', 'silver').replace('.json', '.csv').replace('Ingestion', 'Silver')
+
+    storage_silver = storage_path / 'Silver'
+    if storage_silver.exists() == False:
+        storage_silver.mkdir(parents=True, exist_ok=True)
+
     file = file_opener(ingestion_location, 'r')
     data_trans=json.load(file)
-    data_trans=flatten(data_trans) 
+    data_trans=flatten(data_trans)
     current_date=datetime.datetime.now()
     #adding time of tranformation
     data_trans['ETL_time'] = current_date.strftime('%Y-%M-%D %H:%M:%S')
     file.close()
 
-                  
+
     # #open a csv file for writing
     file = file_opener(silver_output, 'w')
     writer=csv.writer(file,delimiter='|')
@@ -33,5 +37,3 @@ def silver(ingestion_location):
     file.close()
 
     return silver_output
-
-
