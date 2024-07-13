@@ -21,6 +21,7 @@ def main():
     print(silver_location)
     # running gold
     gold(silver_location)
+    #print()
     # write_to_db()
 
 

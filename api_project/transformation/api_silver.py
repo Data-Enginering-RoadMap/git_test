@@ -33,5 +33,3 @@ def silver(ingestion_location):
     file.close()
 
     return silver_output
-
-
