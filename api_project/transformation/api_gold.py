@@ -6,6 +6,7 @@ from collections import defaultdict
 from pprint import pprint
 import statistics
 from transformation.api_silver import file_opener
+from pathlib import Path
 
 dictionary= defaultdict(list)
 
@@ -29,20 +30,30 @@ def read_silver(file_path):
 
     return dictionary
 
-
+gold_storage_location='api_project/Storage/Gold'
+gold_file='api_project/Storage/Gold/data_gold.csv'
 def get_gold():
-     with open('api_project/Storage/Gold/data_gold.csv', 'r') as f:
-        data = f.read()
-        if data:
-             return data
-        else: 
-            return None
+    path=Path(gold_storage_location)
+    #path=Path('api_project/Storage/Gold')
+    if path.exists():
+        with open(gold_file, 'r') as f:
+            data = f.read()
+            if data:
+                return data
+    path.mkdir()
+    return None
+# def write_csv(file_location, mode,data,**kwargs):
+#     f = file_opener(file_location, mode,**kwargs)
+#     writer=csv.writer(f)
+#     writer.writerows(data)
+        
+time_loaded=datetime.datetime.now().strftime('%Y-%M-%D %H:%M:%S')
 
-
-def culave(file_path):
+def culave(file_path,file_opener):
      # value from silver
     silver = read_silver(file_path)
     av_float = silver['bpi_GBP_rate_float']
+    av_float=av_float[0]
     gold_data= " "
     print(av_float)
     print (gold_data)
@@ -57,21 +68,21 @@ def culave(file_path):
         #with open('gold_path', 'w') as f:
             #header 
             #f.write(f'{av_float}, 1' )# data
-        headers="Time_loaded, Sum, Count, Average"
-        current_date=datetime.datetime.now()
-        time_loaded = current_date.strftime('%Y-%M-%D %H:%M:%S')
+        headers="Time_loaded, Sum,, Count, Average".split(',')
+        #current_date=datetime.datetime.now()
+        #time_loaded = current_date.strftime('%Y-%M-%D %H:%M:%S')
         gold_cum=(f'{av_float}')
         print(gold_cum)
         gold_avg=(f'{av_float}')
         Column_count = 1
-        gold_data = f'{time_loaded}, {gold_cum},{gold_avg},{Column_count}'
+        #gold_data = [time_loaded, gold_cum,gold_avg,Column_count]
+        gold_data = f'{time_loaded}, {gold_cum},{Column_count},{gold_avg}'.split(',')
         #file = file_opener('api_project/Storage/Gold/data_gold.csv', 'w')
-        f = file_opener('api_project/Storage/Gold/data_gold.csv', 'w')
-        #with open('api_project/Storage/Gold/data_gold.csv', 'w') as f:
+        f = file_opener(gold_file, 'w')
         writer=csv.writer(f)
         writer.writerow(headers)
         writer.writerow(gold_data)
-            
+    
         # with open('api_project/Storage/Gold/data_gold.csv', 'w') as f:
         #     f.write(gold_data)
        
@@ -79,26 +90,25 @@ def culave(file_path):
     else:      
         # with open('api_project/Storage/Gold/data_gold.csv', 'r') as file:
         #     reader = csv.reader(file)
-        file = file_opener('api_project/Storage/Gold/data_gold.csv', 'r')
+        file = file_opener(gold_file, 'r')
         reader = csv.reader(file)
         #print (reader)
         #print ('data check')
-        time_loaded=datetime.datetime.now().strftime('%Y-%M-%D %H:%M:%S')
         last_value_sum= None
         last_value_count= None
         for row in reader:
                 last_value_sum = row[1]
-                last_value_count=row[3]
-        gold_cum=int(last_value_sum)+int(av_float)
-        Column_count = last_value_count + 1 
+                last_value_count=row[2]
+        gold_cum=float(last_value_sum)+float(av_float)
+        Column_count = int(last_value_count) + 1 
         gold_avg = gold_cum/Column_count           
-        gold_data = f'{time_loaded}, {gold_cum},{gold_avg},{Column_count}' 
-        with open('api_project/Storage/Gold/data_gold.csv', 'a', newline=" ") as file_append:
-                writer=csv.writer(file_append)
-                writer.writerow(gold_data)
-                
-            # with open('api_project/Storage/Gold/data_gold.csv', 'w') as f:
-            #     f.write(gold_data)
+        gold_data = f'{time_loaded}, {gold_cum},{Column_count},{gold_avg}'.split(',')
+        # with open(gold_file, 'a', newline='') as file_append:
+        #         writer=csv.writer(file_append)
+        #         writer.writerow(gold_data)
+        file_append= file_opener(gold_file, 'a',newline='')
+        writer=csv.writer(file_append)
+        writer.writerow(gold_data)        
         print(gold_data)  
             
             
@@ -119,10 +129,10 @@ def culave(file_path):
 
 
         
-def gold(file_path):
+def gold(file_path,fileopener):
     # reading silver file
 
-    culave(file_path)
+    culave(file_path,fileopener)
             
         
     #pprint(dictionary)

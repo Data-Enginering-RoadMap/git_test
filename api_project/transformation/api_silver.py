@@ -5,8 +5,8 @@ import datetime
 #flatten json file
 coindesk_june_7_flat='output.json'
 #dry
-def file_opener(file_location, mode):
-    file = open(file_location, mode)
+def file_opener(file_location, mode,**kwargs):
+    file = open(file_location, mode,**kwargs)
     return file
 
 #read json file
@@ -24,7 +24,7 @@ def silver(ingestion_location):
                   
     # #open a csv file for writing
     file = file_opener(silver_output, 'w')
-    writer=csv.writer(file)
+    writer=csv.writer(file,delimiter='|')
     #write headers to csv
     headers=data_trans.keys()
     writer.writerow(headers)

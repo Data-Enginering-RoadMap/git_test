@@ -1,7 +1,8 @@
 from transformation.ingestion import ingestion 
-from transformation.api_silver import silver
+from transformation.api_silver import silver, file_opener
 from transformation.api_gold import gold
 from pathlib import Path
+import datetime
 
 root_path = Path('.')
 storage_path = root_path / 'api_project/Storage'
@@ -20,8 +21,9 @@ def main():
     silver_location = silver(ingestion_location)
     print(silver_location)
     # running gold
-    gold(silver_location)
-    #print()
+    gold(silver_location,file_opener)
+    execution_time=datetime.datetime.now().strftime('%Y-%M-%D %H:%M:%S')
+    print(f'Execution time:{execution_time}')
     # write_to_db()
 
 
