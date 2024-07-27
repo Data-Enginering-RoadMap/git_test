@@ -2,12 +2,13 @@ import json
 import csv
 from flatten_json import flatten
 import datetime
+from utility.utils import time_exec, file_opener
 #flatten json file
 coindesk_june_7_flat='output.json'
 #dry
-def file_opener(file_location, mode,**kwargs):
-    file = open(file_location, mode,**kwargs)
-    return file
+# def file_opener(file_location, mode,**kwargs):
+#     file = open(file_location, mode,**kwargs)
+#     return file
 
 #read json file
 def silver(ingestion_location):

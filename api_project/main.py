@@ -3,6 +3,7 @@ from transformation.api_silver import silver, file_opener
 from transformation.api_gold import gold
 from pathlib import Path
 import datetime
+import sys
 
 root_path = Path('.')
 storage_path = root_path / 'api_project/Storage'
@@ -22,11 +23,11 @@ def main():
     print(silver_location)
     # running gold
     gold(silver_location,file_opener)
-    execution_time=datetime.datetime.now().strftime('%Y-%M-%D %H:%M:%S')
-    print(f'Execution time:{execution_time}')
+    # execution_time=datetime.datetime.now().strftime('%Y-%M-%D %H:%M:%S')
+    # print(f'Execution time:{execution_time}')
     # write_to_db()
 
 
 if __name__ == '__main__':
-    print('hello world')
-    main()
+    print(sys.path)
+    # main()
